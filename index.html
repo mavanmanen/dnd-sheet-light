@@ -1,19 +1,29 @@
 <html>
     <body>
+        <span id="counter"></span>
         <input id="testInput" type="text">
         <button onclick="saveData()">Save</button>
 
         <script lang="js">
+            
             function saveData() {
                 const value = document.getElementById('testInput').value
                 localStorage.setItem('test', value)
             } 
+
+            let count = 0
+            function callback() {
+                count++
+                document.getElementById('counter').innerText = count
+            }
 
             document.addEventListener('DOMContentLoaded', function(e) {
                 const value = localStorage.getItem('test')
                 if(value) {
                     document.getElementById('testInput').value = value
                 }
+
+                setInterval(callback, 1000)
             })
         </script>
     </body>
