@@ -1,5 +1,20 @@
 <html>
     <body>
-        hello world
+        <input id="testInput" type="text">
+        <button onclick="saveData()">Save</button>
+
+        <script lang="js">
+            function saveData() {
+                const value = document.getElementById('testInput').value
+                localStorage.setItem('test', value)
+            } 
+
+            document.addEventListener('DOMContentLoaded', function(e) {
+                const value = localStorage.getItem('test')
+                if(value) {
+                    document.getElementById('testInput').value = value
+                }
+            })
+        </script>
     </body>
 </html>
